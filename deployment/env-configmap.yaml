@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-configmap
+data:
+  POSTGRES_DATABASE: bravytechrds
+  POSTGRES_HOST: bravytechrds.c9xekj5wlw1f.us-east-1.rds.amazonaws.com"
+  AWS_REGION: us-east-1
+  AWS_PROFILE: default
+  AWS_S3_BUCKET: bravytechbucket
+  JWT_SECRET: nigeria@bravytech
+  URL: https://ade3c9c8af6634785aaefca6c17706e6-1706018325.us-east-1.elb.amazonaws.com:8100

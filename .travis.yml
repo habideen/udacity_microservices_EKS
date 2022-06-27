@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+  - 16
+
+services:
+  - docker
+
+before_install:
+  - echo "nothing needs to be installed"
+
+install:
+  - echo "nothing needs to be installed"
+
+before_script:
+  - echo "no tests"
+
+script:
+  - docker --version # print the version for logging
+  - docker-compose -f docker-compose-build.yaml build --parallel
+  - docker tag reverseproxy bravytech/reverseproxy:v2022_1
+  - docker tag udagram-api-user bravytech/udagram-api-user:v2022_1
+  - docker tag udagram-api-feed bravytech/udagram-api-feed:v2022_1
+  - docker tag udagram-frontend bravytech/udagram-frontend:v2022_1
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push bravytech/reverseproxy:v2022_1
+  - docker push bravytech/udagram-api-user:v2022_1
+  - docker push bravytech/udagram-api-feed:v2022_1
+  - docker push bravytech/udagram-frontend:v2022_1
