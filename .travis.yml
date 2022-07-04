@@ -15,7 +15,7 @@ before_script:
   - echo "no tests"
 
 script:
-  - docker --version # print the version for logging
+  - docker --version # print the version for logging ####You can also use build parallel to build and tag
   - docker-compose -f docker-compose-build.yaml build --parallel
   - docker tag reverseproxy bravytech/reverseproxy:v2022_1
   - docker tag udagram-api-user bravytech/udagram-api-user:v2022_1
